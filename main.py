@@ -7,21 +7,7 @@ railway_host = os.getenv("RAILWAY_PUBLIC_DOMAIN", "mcp-simple-server-poc-product
 mcp = FastMCP(
     "Simple Server",
     transport_security=TransportSecuritySettings(
-        enable_dns_rebinding_protection=True,
-        allowed_hosts=[
-            "localhost:*",
-            "127.0.0.1:*",
-            railway_host,
-            f"{railway_host}:*",
-            "healthcheck.railway.app",
-            "healthcheck.railway.app:*"
-        ],
-        allowed_origins=[
-            "http://localhost:*",
-            "https://localhost:*",
-            f"https://{railway_host}",
-            "https://healthcheck.railway.app"
-        ]
+        enable_dns_rebinding_protection=False
     )
 )
 
@@ -36,9 +22,13 @@ def multiply(a: float, b: float) -> float:
     return a * b
 
 def main():
+    host = "0.0.0.0"
+    port = int(os.getenv("PORT", "8000"))
     print("Starting MCP server")
     print("RAILWAY_PUBLIC_DOMAIN =", railway_host)
-    mcp.run(transport="streamable-http")
+    print("HOST =", host)
+    print("PORT =", port)
+    mcp.run(transport="streamable-http", host=host, port=port)
 
 if __name__ == "__main__":
     main()
