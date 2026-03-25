@@ -36,12 +36,9 @@ def multiply(a: float, b: float) -> float:
     return a * b
 
 def main():
-    host = os.getenv("HOST", "0.0.0.0")
-    port = int(os.getenv("PORT", "8000"))
     print("Starting MCP server")
     print("RAILWAY_PUBLIC_DOMAIN =", railway_host)
-    mcp.run(transport="streamable-http", host=host, port=port)
+    mcp.run(transport="streamable-http")
 
 if __name__ == "__main__":
     main()
-EOF
