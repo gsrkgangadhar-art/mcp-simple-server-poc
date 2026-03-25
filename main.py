@@ -1,4 +1,3 @@
-cat > main.py <<'EOF'
 from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
 import os
