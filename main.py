@@ -28,7 +28,7 @@ def main():
     print("RAILWAY_PUBLIC_DOMAIN =", railway_host)
     print("HOST =", host)
     print("PORT =", port)
-    mcp.run(transport="streamable-http", host=host, port=port)
+    mcp.run(transport="http", host=host, port=port)
 
 if __name__ == "__main__":
     main()
